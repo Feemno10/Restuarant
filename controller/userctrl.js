@@ -8,9 +8,9 @@ exports.updateuser = async (req,res)=>{
     const userId = Number (req.params.id);
     const { email , password , first_name , last_name , address} = req.body
 
-    if(!req.user.role !== "admin" && req.user.id !== userId){
-        return res.status(403).json ({ message : "ไม่มีสิทธิแก้ไขข้อมูลผู้อื่น"})
-    }
+    if (req.user.role !== "admin" && req.user.id !== userId) {
+    return res.status(403).json({ message: "ไม่มีสิทธิแก้ไขข้อมูลผู้อื่น" });
+}
     try{
         const existing = await User.checkemail(email);
         if(existing && existing.id !== userId){

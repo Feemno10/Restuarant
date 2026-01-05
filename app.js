@@ -32,10 +32,12 @@ app.get('/' , (req,res)=>{
 });
 
 
-app.use('/auth' , require("./routes/authroutes"))
+app.use('/auth' , require("./routes/authroutes"));
 app.use('/user', require("./routes/userroutes"));
-app.use('/food' , require("./routes/foodroutes"))
-
+app.use('/food' , require("./routes/foodroutes"));
+app.use('/cart' , require("./routes/cartroutes"));
+app.use('/order' , require("./routes/orderroutes"));
+app.use("/categories", require("./routes/categoryroutes"));
 app.listen(port , ()=>{
   console.log('Server Started at Port');
 });
